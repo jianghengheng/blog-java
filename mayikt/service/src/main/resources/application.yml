@@ -1,0 +1,19 @@
+
+server:
+  port: 8080
+spring:
+  application:
+    ###服务的名称
+    name: jiangheng
+  datasource:
+    password: 123456
+    username: jiangheng
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sys_admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+  redis:
+    host: 127.0.0.1
+    port: 6379
+logging:
+  level:
+    ###打印mybatis日志
+    com.mayikt.mapper: debug
