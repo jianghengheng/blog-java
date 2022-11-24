@@ -8,6 +8,8 @@ import com.mayikt.entity.SysUser;
 import com.mayikt.entity.utils.MD5Utils;
 import com.mayikt.entity.utils.RedisUtil;
 import com.mayikt.mapper.SysUserMapper;
+import com.mayikt.service.UserService;
+import com.mayikt.service.dto.UserRespDto;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +23,8 @@ public class LoginService extends BaseApiService implements com.mayikt.service.L
     @Resource
     private SysUserMapper sysUserMapper;
 
+@Resource
+private UserService userService;
     @Override
     public BaseResponse Login(String phoneNumber, String password) {
 
@@ -49,11 +53,11 @@ public class LoginService extends BaseApiService implements com.mayikt.service.L
         Integer userId = sysDBUser.getId();
         // 存入到redis中
         RedisUtil.setString(token, userId + "");
-        HashMap<Object, Object> data = new HashMap<>();
-        data.put("token",MD5Utils.md5("jiangheng"));
-        data.put("userID",sysDBUser.getId());
-
-        return setResultSuccessData(data);
+//        HashMap<Object, Object> data = new HashMap<>();
+//        data.put("token",MD5Utils.md5("jiangheng"));
+//        data.put("userID",sysDBUser.getId());
+        UserRespDto userRespDto= userService.getUserInfoByToken(token).getData();
+        return setResultSuccessData(userRespDto);
     }
 
 
