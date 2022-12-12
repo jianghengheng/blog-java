@@ -9,13 +9,23 @@ import com.mayikt.mapper.SysUserMapper;
 import com.mayikt.service.UserService;
 import com.mayikt.service.dto.UserRespDto;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+@Service
 @RestController
 public class UserServiceImpl extends BaseApiService implements UserService {
+    @Value("${file-save-path}")
+    private String fileSavePath;
     @Resource
     private SysUserMapper sysUserMapper;
     @Override
@@ -38,4 +48,7 @@ public class UserServiceImpl extends BaseApiService implements UserService {
 UserRespDto userRespDto= (UserRespDto) new DoToDto.MeiteBeanUtils().doToDto(sysUser,UserRespDto.class);
         return setResultSuccessData(userRespDto);
     }
+
+  
+
 }

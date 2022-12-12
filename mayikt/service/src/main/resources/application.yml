@@ -2,6 +2,10 @@
 server:
   port: 8080
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10000MB
+      max-request-size: 100000MB
   application:
     ###服务的名称
     name: jiangheng
@@ -9,11 +13,10 @@ spring:
     password: 123456
     username: jiangheng
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/sys_admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
-  redis:
-    host: 127.0.0.1
-    port: 6379
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+
 logging:
   level:
     ###打印mybatis日志
     com.mayikt.mapper: debug
+file-save-path: C:\Users\Administrator\Desktop\11
