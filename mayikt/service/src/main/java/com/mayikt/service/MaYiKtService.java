@@ -10,4 +10,7 @@ public interface MaYiKtService {
 
     @GetMapping("/GetName1")
     BaseResponse getMaYiKt2(Integer age);
+
+    interface ArticleService {
+    }
 }
