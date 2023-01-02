@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @TableName("table_article")
@@ -35,4 +36,6 @@ public class ArticleDao implements Serializable {
      * 分类id
      */
     private Integer categoryId;
+
+    private  String creatTime;
 }
